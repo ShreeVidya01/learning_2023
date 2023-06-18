@@ -1,4 +1,5 @@
 #include<stdio.h>
+// sum of even and odd index
 int diff(int arr[],int n,int* sumeven,int* sumodd);
 
 int main(){
