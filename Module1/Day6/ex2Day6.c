@@ -1,13 +1,14 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-struct Student{
+struct Student {
     int rollno;
     char name[20];
     float marks;
 };
 
-void initialize(struct Student* student, int size) {
+void initializeArray(struct Student* student, int size) {
     for (int i = 0; i < size; i++) {
         student[i].rollno = 0;
         strcpy(student[i].name, "");
@@ -15,38 +16,31 @@ void initialize(struct Student* student, int size) {
     }
 }
 
-
-void display(struct Student* student) {
-    printf("Roll No: %d\n", student->rollno);
-    printf("Name: %s\n", student->name);
-    printf("Marks: %.2f\n\n", student->marks);
-}
-
-
-int main(){
+int main() {
     int size;
-    printf("enter the number of students");
-    scanf("%d",&size);
 
-    struct Student student[size];
-    initialize(student,size);
+    // Get the size of the array from the user
+    printf("Enter the number of students: ");
+    scanf("%d", &size);
 
+    // Create an array of structures dynamically
+    struct Student* student = (struct Student*)malloc(size * sizeof(struct Student));
 
-    printf("Enter student details (rollno name marks):\n");
+    // Initialize the array of structures
+    initializeArray(student, size);
+
+    // Display the array of structures
+    printf("\nArray of Structures:\n");
     for (int i = 0; i < size; i++) {
-        scanf("%d", &student[i].rollno);
-        getchar();  // Clear the newline character from the input buffer
-        scanf("%[^\n]", student[i].name);
-        getchar();  // Clear the newline character from the input buffer
-        scanf("%f", &student[i].marks);
-        getchar();  // Clear the newline character from the input buffer
+        printf("Student %d:\n", i + 1);
+        printf("Rollno: %d\n", student[i].rollno);
+        printf("Name: %s\n", student[i].name);
+        printf("Marks: %.2f\n", student[i].marks);
+        printf("\n");
     }
 
-    
-   printf("\nStudent Details:\n");
-    for (int i = 0; i < size; i++) {
-        display(&student[i]);
-    }
-    
+    // Free dynamically allocated memory
+    free(student);
+
     return 0;
 }

@@ -13,7 +13,6 @@ void display(struct Student* student) {
     printf("Marks: %.2f\n\n", student->marks);
 }
 
-
 int main(){
     int size;
     printf("enter the number of students");
