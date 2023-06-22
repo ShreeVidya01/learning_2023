@@ -1,0 +1,4 @@
+In this code, the program attempts to open a file named "read.txt" for reading ("r") and a file named "write.txt" for writing ("w+"). 
+It then checks if the source file (fin) exists. 
+If it does, the program reads each line of the source file using getline() and writes it to the destination file (fout) using fprintf().
+Finally, the program closes both files and returns 0.
